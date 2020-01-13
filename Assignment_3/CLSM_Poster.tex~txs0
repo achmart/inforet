@@ -1,0 +1,174 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TUM-Vorlage: Plakat A1 Querformat
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Rechteinhaber:
+%     Technische Universität München
+%     https://www.tum.de
+% 
+% Gestaltung:
+%     ediundsepp Gestaltungsgesellschaft, München
+%     http://www.ediundsepp.de
+% 
+% Technische Umsetzung:
+%     eWorks GmbH, Frankfurt am Main
+%     http://www.eworks.de
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{./Ressourcen/Plakat/PraeambelA1Quer.tex} % !!! NICHT ENTFERNEN !!!
+\input{./_Einstellungen.tex}                    % !!! DATEI ANPASSEN !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\PlakatTitel}{CLSM - Convolutional Latent Semantic Model}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{./Ressourcen/Plakat/Anfang.tex} % !!! NICHT ENTFERNEN !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% 3-Spalten-Layout %%
+%%%%%%%%%%%%%%%%%%%%%%
+
+\PlakatKopfzeileMitDreizeiler
+\PlakatFusszeileLeer
+
+\PlakatTitelEins{\PlakatTitel}
+\PlakatTitelZwei{A Latent Semantic Model with Convolutional-Pooling Structure for Information Retrieval}
+\PlakatTitelDrei{G10 - Martin Achtner, Ridon Arifi, Daniel Ehrhardt und Lukas Fichtner}
+
+\begin{multicols*}{3}
+
+%\setlength{\PlakatBeschreibungBeispielbildBeschnitt}{50cm} % Anpassen der Größe des Beispielbildes
+%\input{./PlakatBeschreibung.tex}
+
+\PlakatUeberschrift{Introduction}
+
+\begin{itemize}
+
+\item Modern search engines rely on semantic models for the retrieval of Web documents with search queries.
+
+\item These perform better than simple lexical models by combining words that appear in a similar context into semantic clusters.
+
+\item However existing models do mostly not consider the context of the words which can lead to unwanted results. (e.g. microsoft \textit{office} $\leftrightarrow$ apartment \textit{office})
+
+\item CLSM is taking the context into account and is thus able to achieve a better performance.
+
+\end{itemize}
+
+
+\PlakatUeberschrift{CLSM Architecture}
+The CLSM consists of five layers (c. Figure 1) in the following order:\\
+\vspace{20mm}
+\begin{enumerate}
+	\item Word-n-gram layer
+%		\begin{itemize}
+%			\item Run a contextual sliding window of size n over the input word sequence $\rightarrow$ Separation into word-n-grams
+%			\item Add passing words (<s>) at beginning and end of the sequence $\rightarrow$ fragment for each word is of equal length
+%		\end{itemize}
+	
+	\item Letter-trigram layer
+	
+%		\begin{itemize}
+%			\item Segment the single words into letter-trigrams.
+%			\item Represent the word as a count vector f of the trigrams.
+			%\begin{equation}
+			%f('word') = \begin{array}{c}0\\...\\1\\...\\1\\...\\1\\...\\1\\...\\0\end{array}
+			%\end{equation}
+%			\item Build word-n-grams for each of the words by putting n count vectors together in a vector $l$ like this:
+%				\begin{equation}
+%					l_t = [f_{t-d}^T, ..., f_{t}^T, ..., s_{t+d}^T]^T \hspace{20mm} n = 2d + 1,\hspace{5mm} t = 1...T\footnote{\label{foot:1} T: Number of words in the input word sequence}
+%				\end{equation}
+%		\end{itemize}
+	
+	\item Convolutional layer
+	
+%		\begin{itemize}
+%			\item Project $l_t$ to a contextual feature vector $h_t$ through the convolution matrix $W_c$
+%				\begin{equation}
+%					h_t = tanh(W_c \cdot l_t) \hspace{20mm} t = 1...T
+%				\end{equation}
+%			\item Here tanh denotes the activation function of the underlying neural network.
+%		\end{itemize}
+%\vfill
+%\columnbreak
+
+	\item Max-pooling layer
+%		\begin{itemize}
+%			\item Combine the local feature vectors into one global vector by taking the maximum of each dimension of the vectors. (max pooling)
+%				\begin{equation}
+%				v(i) = \max\limits_{t=1,...,T}\{h_t(i)\} \hspace{20mm} i = 1, ..., K\footnote{\label{foot:2} K: Dimensionality of the max pooling layer}
+%				\end{equation}
+%		\end{itemize}
+	\item Semantic layer
+%		\begin{itemize}
+%			\item Extract the high-level semantic representation through one more non-linear transformation with the semantic projection matrix $W_s$.
+%				\begin{equation}
+%					y = tanh(W_s \cdot v)
+%				\end{equation}
+%		\end{itemize}
+\end{enumerate}
+
+% Bild zur Architektur
+
+\PlakatBild[0cm \PlakatBeschreibungBeispielbildBeschnitt{} 0cm 0cm]{Architektur.png}{\textbf{Figure 1:} The Architecture of CLSM, Shen et al.}
+
+\setlength{\PlakatBeschreibungBeispielbildBeschnitt}{50cm} % Anpassen der Größe des Beispielbildes
+
+\PlakatUeberschrift{Usage}
+
+\PlakatBild[0cm \PlakatBeschreibungBeispielbildBeschnitt{} 0cm 0cm]{./SemanticMatching-query-document.png}{\textbf{Figure 2:} bla bla bla, Shen et al.}
+
+\PlakatUeberschrift{Learning}
+
+\PlakatUeberschrift{Experiments and Results}
+
+\end{multicols*}
+
+\clearpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% 4-Spalten-Layout %%
+%%%%%%%%%%%%%%%%%%%%%%
+
+\PlakatKopfzeileMitEinzeiler
+\PlakatFusszeileMehrspaltig{
+    Hier kann ein längerer Text stehen, der in mehreren Spalten angeordnet wird.
+    \vfill\columnbreak
+    Durch \texttt{\textbackslash{}vfill\textbackslash{}columnbreak} lässt sich ein Spaltenwechsel erzwingen.
+    \vfill\columnbreak~
+    \vfill\columnbreak~
+    \vfill\columnbreak~
+    \vfill\columnbreak~
+}
+
+\PlakatTitelEins{\PlakatTitel}
+\PlakatTitelZwei{Überschrift 2 läuft über gesamte Papierbreite}
+\PlakatTitelDrei{Überschrift 3 läuft über gesamte Papierbreite oder gemäß Spaltenbreite}
+
+\begin{multicols*}{4}
+
+%\setlength{\PlakatBeschreibungBeispielbildBeschnitt}{53cm} % Anpassen der Größe des Beispielbildes
+%\input{./PlakatBeschreibung.tex}
+
+
+\PlakatUeberschrift{Blindtext}
+
+\lipsum[1-3]
+
+
+\end{multicols*}
+
+\clearpage
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document} % !!! NICHT ENTFERNEN !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
